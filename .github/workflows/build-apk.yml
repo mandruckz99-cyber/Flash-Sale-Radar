@@ -26,13 +26,8 @@ jobs:
           distribution: temurin
           java-version: 21
 
-      - name: Install project packages
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
+      -       - name: Install project packages
+        run: npm install --no-audit --no-fund
 
       - name: Install Capacitor
         run: npm install @capacitor/core@^7 @capacitor/cli@^7 @capacitor/android@^7
