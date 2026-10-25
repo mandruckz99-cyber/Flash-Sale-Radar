@@ -32,6 +32,18 @@ jobs:
       - name: Install Capacitor
         run: npm install @capacitor/core@^7 @capacitor/cli@^7 @capacitor/android@^7 --legacy-peer-deps --no-audit --no-fund
 
+      
+      - name: Check project location
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Files in current directory:"
+          ls -la
+          echo "Available package.json files:"
+          find . -maxdepth 3 -name package.json -not -path "*/node_modules/*"
+          echo "Scripts in root package.json:"
+          node -e "console.log(JSON.stringify(require('./package.json').scripts, null, 2))"
+
       - name: Build website
         run: npm run build
 
